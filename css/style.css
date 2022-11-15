@@ -85,6 +85,7 @@ button {
 }
 .partials {
     font-size: 20px;
+    direction: ltr;
 }
 
 .btns {

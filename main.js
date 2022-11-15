@@ -8,7 +8,6 @@ function onCompute() {
     const res = computePayment(amount)
     renderResult(res)
 
-    // document.querySelector('input').value = ''
 }
 
 function renderResult(res) {
@@ -24,10 +23,16 @@ function onShowPartials() {
 
 function onRenderPartials() {
     let str = ''
-    gResult.partials.forEach((partial, idx) => {
-        const plus = idx === gResult.partials.length - 1 ? '' : ' + '
-        str += `${numberWithCommas(partial.value)} * ${partial.percent * 100}%` + plus
-    })
+    console.log('gResult.isMin:', gResult.isMin)
+    if (!gResult.isMin) {
+        gResult.partials.forEach((partial, idx) => {
+            const plus = idx === gResult.partials.length - 1 ? '' : ' +  '
+            str += `${partial.percent * 100}% * ${numberWithCommas(partial.value)}` + plus
+        })
+    } else {
+        // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
+        str = numberWithCommas(gResult.value) + ' (minimum)'
+    }
 
     document.querySelector('.partials').innerText = str
     document.querySelector('.partials').classList.remove('hidden')
@@ -53,11 +58,20 @@ function hideModal() {
 
 
 
+/*TEST START*/
+
 function computePayment(amount) {
 
     if (amount > 1077855) {
-        amount = Math.max(amount * 0.04, 50496)
-        return { value: amount, partials: [{ value: amount, percent: 0.04 }] }
+
+        // amount = Math.max(amount * 0.04, 50496)
+        var isMin
+        let res = amount * 0.04
+        if (res < 50496) {
+            res = 50496
+            isMin = true
+        }
+        return { value: res, partials: [{ value: amount, percent: 0.04}], isMin }
     }
     if (amount > 109682) {
         const limit = 109682
@@ -65,12 +79,72 @@ function computePayment(amount) {
         return { value: limit * 0.1 + diff * 0.04, partials: [{ value: limit, percent: 0.1 }, { value: diff, percent: 0.04 }] }
     }
     if (amount > 26981) {
-        return { value: Math.max(4054, amount * 0.1), partials: [{ value: amount, percent: 0.1 }] }
+        var isMin
+        let res = amount * 0.1
+        if (res < 4054) {
+            res = 4054
+            isMin = true
+        }
+        return { value: res, partials: [{ value: amount, percent: 0.1}], isMin }
     }
     if (amount > 0) {
+        var isMin
+        let res = amount * 0.15
+        if (res < 812) {
+            res = 812
+            isMin = true
+        }
+        return { value: res, partials: [{ value: amount, percent: 0.15}], isMin }
+    }
+}
+
+/*TEST END*/
+
+
+
+/*ORIGINAL START*/
+
+/*
+function computePayment(amount) {
+
+    if (amount > 1077855) {
+
+        // amount = Math.max(amount * 0.04, 50496)
+        var isMin
+        let res = amount * 0.04
+        if (res < 50496) {
+            res = 50496
+            isMin = true
+        }
+        return { value: res, partials: [{ value: amount, percent: 0.04}], isMin }
+    }
+    if (amount > 109682) {
+        const limit = 109682
+        const diff = amount - limit
+        return { value: limit * 0.1 + diff * 0.04, partials: [{ value: limit, percent: 0.1 }, { value: diff, percent: 0.04 }] }
+    }
+    if (amount > 26981) {
+        var isMin
+        let res = amount * 0.1
+        if (res < 4054) {
+            res = 4054
+            isMin = true
+        }
+        return { value: Math.max(4054, amount * 0.1), partials: [{ value: amount, percent: 0.1}], isMin }
+    }
+    if (amount > 0) {
+        var isMin
+        let res = amount * 0.15
+        if (res < 812) {
+            res = 812
+            isMin = true
+        }
         return { value: Math.max(812, amount * 0.15), partials: [{ value: amount, percent: 0.15 }] }
     }
 }
+*/
+
+/*ORIGINAL END*/
 
 
 function numberWithCommas(x) {
