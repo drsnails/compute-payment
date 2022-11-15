@@ -54,7 +54,8 @@ function hideModal() {
 function computePayment(amount) {
 
     if (amount > 1077855) {
-        return { value: amount * 0.04, partials: [{ value: amount, percent: 0.04 }] }
+        amount = Math.max(amount * 0.04, 50496)
+        return { value: amount, partials: [{ value: amount, percent: 0.04 }] }
     }
     if (amount > 109682) {
         const limit = 109682
