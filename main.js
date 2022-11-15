@@ -8,7 +8,7 @@ function onCompute() {
     const res = computePayment(amount)
     renderResult(res)
 
-    document.querySelector('input').value = ''
+    // document.querySelector('input').value = ''
 }
 
 function renderResult(res) {
@@ -45,6 +45,8 @@ function hideModal() {
     const elModal = document.querySelector('.result-modal')
     elModal.classList.add('hidden')
     elModal.querySelector('.result span').innerText = ''
+    document.querySelector('input').value = ''
+
     gResult = null
 
 }
