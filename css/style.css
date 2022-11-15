@@ -10,6 +10,7 @@ body {
     /* min-height: 100vh; */
     height: 100vh;
     direction: rtl;
+
 }
 
 /* main {
@@ -19,12 +20,15 @@ body {
     height: 100%;
 } */
 main {
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     padding-bottom: 20vh;
     height: 100%;
+    max-width: 1000px;
+
 }
 
 .result-modal {
