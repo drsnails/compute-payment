@@ -19,7 +19,7 @@ console.log('html2canvas:', html2canvas)
 
 function renderResult(res) {
     gResult = res
-    document.querySelector('.result span').innerText = numberWithCommas(res.value)
+    document.querySelector('.result span').innerHTML = '&#8362; '+ numberWithCommas(res.value)
     showModal()
 
 }
@@ -32,15 +32,15 @@ function onRenderPartials() {
     let str = ''
     if (!gResult.isMin) {
         gResult.partials.forEach((partial, idx) => {
-            const plus = idx === gResult.partials.length - 1 ? '' : ' +  '
-            str += `${partial.percent * 100}% * ${numberWithCommas(partial.value)}` + plus
+            const plus = idx === gResult.partials.length - 1 ? '' : ' &#43;  '
+            str += `&nbsp;${partial.percent * 100}% &#215; ${numberWithCommas(partial.value)}&nbsp;` + plus
         })
     } else {
         // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
-        str = numberWithCommas(gResult.value) + ' (minimum)'
+        str = numberWithCommas(gResult.value) + '&#8362; (minimum)'
     }
 
-    document.querySelector('.partials').innerText = str
+    document.querySelector('.partials').innerHTML = str
     document.querySelector('.partials').classList.remove('hidden')
 
 }

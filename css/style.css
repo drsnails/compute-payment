@@ -39,6 +39,9 @@ main {
     align-items: center;
     height: 100%;
 }
+.result span {
+    direction: rtl;
+}
 
 input {
     direction: ltr;
