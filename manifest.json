@@ -1,0 +1,26 @@
+{
+    "name": "Lawyers Fee",
+    "short_name": "Lawyers Fee",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#e9e9e9",
+    "theme_color": "#e9e9e9",
+    "description": "App for calculating lawyer's cases fee.",
+    "icons": [
+        {
+            "src": "img/logo-44.png",
+            "sizes": "44x44",
+            "type": "image/png"
+        },
+        {
+            "src": "img/logo-120.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "img/logo-152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        }
+    ]
+}

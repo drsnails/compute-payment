@@ -1,4 +1,7 @@
 'use strict'
+
+navigator.serviceWorker.register('./sw.js')
+
 var gResult = null
 
 function onCompute() {
@@ -62,39 +65,39 @@ function hideModal() {
 
 function computePayment(amount) {
 
-    if (amount > 1077855) {
+    if (amount > 1134660) {
 
         // amount = Math.max(amount * 0.04, 50496)
         var isMin
         let res = amount * 0.04
-        if (res < 50496) {
-            res = 50496
+        if (res < 53157) {
+            res = 53157
             isMin = true
         }
-        return { value: res, partials: [{ value: amount, percent: 0.04}], isMin }
+        return { value: res, partials: [{ value: amount, percent: 0.04 }], isMin }
     }
-    if (amount > 109682) {
-        const limit = 109682
+    if (amount > 115463) {
+        const limit = 115463
         const diff = amount - limit
         return { value: limit * 0.1 + diff * 0.04, partials: [{ value: limit, percent: 0.1 }, { value: diff, percent: 0.04 }] }
     }
-    if (amount > 26981) {
+    if (amount > 28403) {
         var isMin
         let res = amount * 0.1
-        if (res < 4054) {
-            res = 4054
+        if (res < 4268) {
+            res = 4268
             isMin = true
         }
-        return { value: res, partials: [{ value: amount, percent: 0.1}], isMin }
+        return { value: res, partials: [{ value: amount, percent: 0.1 }], isMin }
     }
     if (amount > 0) {
         var isMin
         let res = amount * 0.15
-        if (res < 812) {
-            res = 812
+        if (res < 815) {
+            res = 815
             isMin = true
         }
-        return { value: res, partials: [{ value: amount, percent: 0.15}], isMin }
+        return { value: res, partials: [{ value: amount, percent: 0.15 }], isMin }
     }
 }
 
