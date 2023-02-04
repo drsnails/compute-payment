@@ -41,6 +41,7 @@ main {
 }
 .result span {
     direction: rtl;
+    white-space: nowrap;
 }
 
 input {
@@ -92,6 +93,7 @@ button {
 .partials {
     font-size: 20px;
     direction: ltr;
+    white-space: nowrap;
 }
 
 .btns {
