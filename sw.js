@@ -15,6 +15,7 @@ self.addEventListener('install', event => {
         'https://drsnails.github.io/compute-payment/index.html',
         'https://drsnails.github.io/compute-payment/manifest.json',
         'https://drsnails.github.io/compute-payment/sw.js',
+        'https://drsnails.github.io/compute-payment/lib/html2canvas.min.js',
         'https://drsnails.github.io/compute-payment/main.js',
         'https://drsnails.github.io/compute-payment/css/style.css',
         'https://drsnails.github.io/compute-payment/img/logo-152.png',

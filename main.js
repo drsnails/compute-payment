@@ -15,6 +15,8 @@ function onCompute(ev) {
 
 }
 
+console.log('html2canvas:', html2canvas)
+
 function renderResult(res) {
     gResult = res
     document.querySelector('.result span').innerText = numberWithCommas(res.value)
@@ -59,6 +61,21 @@ function hideModal() {
     gResult = null
 
 }
+
+
+function onShare() {
+    html2canvas(document.body).then(function (canvas) {
+        const imageData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        doUploadImg(imageData, (url)=>{
+            console.log('url:', url)
+            const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(url)}&file=${encodeURIComponent(url)}`
+            window.open(whatsappUrl, "_blank");
+        })
+    });
+}
+
+
+
 
 
 
@@ -154,4 +171,25 @@ function computePayment(amount) {
 function numberWithCommas(x) {
     x = +x.toFixed(2)
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+// const CLOUD_NAME = 'recipe-gen'
+
+async function doUploadImg(imgData, onSuccess) {
+    const CLOUD_NAME = "recipe-gen"
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const formData = new FormData();
+    formData.append('file', imgData)
+    formData.append('upload_preset', 'recipe-gen');
+    try {
+        const res = await fetch(UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        })
+        const data = await res.json()
+        console.log('data', data);
+        onSuccess(data.secure_url)
+
+    } catch (err) {
+        console.log(err);
+    }
 }

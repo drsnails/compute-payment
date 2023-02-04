@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <script src="./lib/html2canvas.min.js"></script>
     <main class="container">
         <section class="result-modal hidden">
             <p class="result"><span></span></p>
@@ -24,8 +25,11 @@
             <button class="btn">חשב</button>
             <input type="number">
         </form>
+        <!-- <a href="whatsapp://send?text=Screenshot&file=' + imageData + '">Share on WhatsApp</a> -->
+        <button class="btn share" onclick="onShare()">שתף</button>
     </main>
     <script src=main.js></script>
+
 </body>
 
 </html>

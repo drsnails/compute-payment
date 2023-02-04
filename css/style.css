@@ -10,7 +10,6 @@ body {
     /* min-height: 100vh; */
     height: 100vh;
     direction: rtl;
-
 }
 
 /* main {
@@ -28,7 +27,6 @@ main {
     padding-bottom: 20vh;
     height: 100%;
     max-width: 1000px;
-
 }
 
 .result-modal {
@@ -59,7 +57,6 @@ button {
 }
 .inputs-container .btn {
     width: 40%;
-    
 }
 .inputs-container input {
     width: 60%;
@@ -83,6 +80,12 @@ button {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+.btn.share {
+    margin-top: 40px;
+    padding: 0.75rem 1.5rem;
+    background-image: linear-gradient(-180deg, #0aaa40 0%, #0fa85b 100%);
+}
 .partials {
     font-size: 20px;
     direction: ltr;
@@ -96,6 +99,9 @@ button {
 .btn:hover {
     background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
 }
+.btn.share:hover {
+    background-image: linear-gradient(-180deg, #1cd55a 0%, #28ab69 100%);
+}
 
 @media (min-width: 768px) {
     .btn {
@@ -106,7 +112,6 @@ button {
 .container {
     padding-inline: 10vw;
 }
-
 
 .hidden {
     display: none;
