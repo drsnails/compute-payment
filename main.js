@@ -4,10 +4,12 @@ navigator.serviceWorker.register('./sw.js')
 
 var gResult = null
 
-function onCompute() {
-
+function onCompute(ev) {
+    ev.preventDefault()
     const elInput = document.querySelector('input')
     const amount = +elInput.value
+    console.log('amount:', amount)
+    if (!amount) return
     const res = computePayment(amount)
     renderResult(res)
 
@@ -26,7 +28,6 @@ function onShowPartials() {
 
 function onRenderPartials() {
     let str = ''
-    console.log('gResult.isMin:', gResult.isMin)
     if (!gResult.isMin) {
         gResult.partials.forEach((partial, idx) => {
             const plus = idx === gResult.partials.length - 1 ? '' : ' +  '

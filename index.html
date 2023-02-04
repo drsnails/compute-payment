@@ -12,7 +12,7 @@
 
 <body>
     <main class="container">
-        <section  class="result-modal hidden">
+        <section class="result-modal hidden">
             <p class="result"><span></span></p>
             <section class="btns">
                 <button onclick="onRenderPartials()" class="btn">פרט</button>
@@ -20,13 +20,11 @@
             </section>
             <p class="partials"></p>
         </section>
-        <section class="inputs-container">
-            <button onclick="onCompute()" class="btn">חשב</button>
+        <form onsubmit="onCompute(event)" class="inputs-container">
+            <button class="btn">חשב</button>
             <input type="number">
-        </section>
+        </form>
     </main>
-    <script src=services/printService.js></script>
-    <script src=services/utils.js></script>
     <script src=main.js></script>
 </body>
 
