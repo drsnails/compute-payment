@@ -23,11 +23,12 @@
         </section>
         <form onsubmit="onCompute(event)" class="inputs-container">
             <button class="btn">חשב</button>
-            <input type="number">
+            <input oninput="handleInput(this)" type="tel">
         </form>
         <!-- <a href="whatsapp://send?text=Screenshot&file=' + imageData + '">Share on WhatsApp</a> -->
         <button class="btn share" onclick="onShare()">שתף</button>
     </main>
+    <script src="services/payment.service.js"></script>
     <script src=main.js></script>
 
 </body>
