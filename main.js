@@ -15,7 +15,6 @@ function onCompute(ev) {
 
 }
 
-console.log('html2canvas:', html2canvas)
 
 function renderResult(res) {
     gResult = res
@@ -83,16 +82,36 @@ function onShare() {
 
 function computePayment(amount) {
 
-    if (amount > 1134660) {
-
+    if (amount > 15000000) {
         var isMin
-        let res = amount * 0.04
+        let res = amount * 0.01
         if (res < 53157) {
             res = 53157
             isMin = true
         }
-        return { value: res, partials: [{ value: amount, percent: 0.04 }], isMin }
+        return { value: res, partials: [{ value: amount, percent: 0.01 }], isMin }
     }
+
+    if (amount > 5000000) {
+        var isMin
+        let res = amount * 0.02
+        if (res < 53157) {
+            res = 53157
+            isMin = true
+        }
+        return { value: res, partials: [{ value: amount, percent: 0.02 }], isMin }
+    }
+
+    if (amount > 1134660) {
+        var isMin
+        let res = amount * 0.03
+        if (res < 53157) {
+            res = 53157
+            isMin = true
+        }
+        return { value: res, partials: [{ value: amount, percent: 0.03 }], isMin }
+    }
+
     if (amount > 115463) {
         const limit = 115463
         const diff = amount - limit
