@@ -58,7 +58,7 @@ function onRenderPartials() {
 
     document.querySelector('.partials').innerHTML = str
     document.querySelector('.partials').classList.remove('hidden')
-    document.querySelector('.copy-url-btn').classList.add('hidden')
+    document.querySelector('.copy-btn-container').classList.add('hidden')
 }
 
 
@@ -74,7 +74,7 @@ function hideModal() {
     elModal.querySelector('.result span').innerText = ''
     document.querySelector('input').value = ''
     gResult = null
-    document.querySelector('.copy-url-btn').classList.remove('hidden')
+    document.querySelector('.copy-btn-container').classList.remove('hidden')
 }
 
 
