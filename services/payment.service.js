@@ -6,27 +6,28 @@
 
 function computePayment(amount) {
 
-    if (amount > 15000000) {
-        var isMin
-        let res = amount * 0.01
-        if (res < 53157) {
-            res = 53157
-            isMin = true
-        }
-        return { value: res, partials: [{ value: amount, percent: 0.01 }], isMin }
-    }
+    // if (amount > 15000000) {
+    //     var isMin
+    //     let res = amount * 0.01
+    //     if (res < 53157) {
+    //         res = 53157
+    //         isMin = true
+    //     }
+    //     return { value: res, partials: [{ value: amount, percent: 0.01 }], isMin }
+    // }
 
-    if (amount > 5000000) {
-        var isMin
-        let res = amount * 0.02
-        if (res < 53157) {
-            res = 53157
-            isMin = true
-        }
-        return { value: res, partials: [{ value: amount, percent: 0.02 }], isMin }
-    }
+    // if (amount > 5000000) {
+    //     var isMin
+    //     let res = amount * 0.02
+    //     if (res < 53157) {
+    //         res = 53157
+    //         isMin = true
+    //     }
+    //     return { value: res, partials: [{ value: amount, percent: 0.02 }], isMin }
+    // }
 
     if (amount > 1134660) {
+        return
         var isMin
         let res = amount * 0.03
         if (res < 53157) {

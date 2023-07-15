@@ -29,7 +29,7 @@ self.addEventListener('activate', event => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (CACHE_NAME !== cacheName &&  cacheName.startsWith("lawyers-fee-cache")) {
+                    if (CACHE_NAME !== cacheName && cacheName.startsWith("lawyers-fee-cache")) {
                         return caches.delete(cacheName);
                     }
                 })

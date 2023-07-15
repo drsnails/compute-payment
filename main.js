@@ -17,8 +17,12 @@ function onCompute(ev) {
 
 
 function renderResult(res) {
-    gResult = res
-    document.querySelector('.result span').innerHTML = '&#8362; ' + numberWithCommas(res.value)
+    const elResSpan = document.querySelector('.result span')
+    if (!res) elResSpan.innerHTML = 'על פי ההסכם לגבי מדרגות הבאות'
+    else {
+        gResult = res
+        elResSpan.innerHTML = '&#8362; ' + numberWithCommas(res.value)
+    }
     showModal()
 
 }
