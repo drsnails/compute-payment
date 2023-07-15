@@ -11,18 +11,10 @@ function computePayment(amount, isPartials) {
         const limit = 15000000
         const diff = amount - limit
         let res = { value: diff * 0.01, partials: [{ value: diff, percent: 0.01 }] }
-        const lastStairRes = computePayment(limit)
-        res.value += lastStairRes.value
-        res.partials.push(...lastStairRes.partials)
+        const { value, partials } = computePayment(limit)
+        res.value += value
+        res.partials.push(...partials)
         return { value: res.value, partials: res.partials, isMin }
-        ///
-        // var isMin
-        // let res = amount * 0.01
-        // if (res < 53157) {
-        //     res = 53157
-        //     isMin = true
-        // }
-        // return { value: res, partials: [{ value: amount, percent: 0.01 }], isMin }
     }
 
     if (amount > 5000000) {
@@ -30,18 +22,10 @@ function computePayment(amount, isPartials) {
         const limit = 5000000
         const diff = amount - limit
         let res = { value: diff * 0.02, partials: [{ value: diff, percent: 0.02 }] }
-        const lastStairRes = computePayment(limit)
-        res.value += lastStairRes.value
-        res.partials.push(...lastStairRes.partials)
+        const { value, partials } = computePayment(limit)
+        res.value += value
+        res.partials.push(...partials)
         return { value: res.value, partials: res.partials, isMin }
-        //////
-        // var isMin
-        // let res = amount * 0.02
-        // if (res < 53157) {
-        //     res = 53157
-        //     isMin = true
-        // }
-        // return { value: res, partials: [{ value: amount, percent: 0.02 }], isMin }
     }
 
     if (amount > 1134660) {
@@ -49,9 +33,9 @@ function computePayment(amount, isPartials) {
         const limit = 1134660
         const diff = amount - limit
         let res = { value: diff * 0.03, partials: [{ value: diff, percent: 0.03 }] }
-        const lastStairRes = computePayment(limit)
-        res.value += lastStairRes.value
-        res.partials.push(...lastStairRes.partials)
+        const { value, partials } = computePayment(limit)
+        res.value += value
+        res.partials.push(...partials)
         return { value: res.value, partials: res.partials, isMin }
     }
 
@@ -148,4 +132,15 @@ const copyUrlToClipboard = async (text = 'https://drsnails.github.io/compute-pay
     } catch (err) {
         console.error('Failed to copy: ', err)
     }
+}
+
+
+function getStairCompute(limit, percent) {
+    var isMin
+    const diff = amount - limit
+    let res = { value: diff * percent, partials: [{ value: diff, percent: percent }] }
+    const { value, partials } = computePayment(limit)
+    res.value += value
+    res.partials.push(...partials)
+    return { value: res.value, partials: res.partials, isMin }
 }
