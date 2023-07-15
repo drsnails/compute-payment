@@ -29,6 +29,25 @@ main {
     max-width: 1000px;
 }
 
+.copy-url-btn {
+    position: fixed;
+    top: 20px;
+    border: 2px solid #37aee2;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    background-color: transparent;
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+    color: black;
+    /* width: 50%; */
+    /* border: 0; */
+    cursor: pointer;
+}
+
 .result-modal {
     width: 100%;
     display: flex;
