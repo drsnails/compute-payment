@@ -60,7 +60,6 @@ function numberWithCommas(x) {
 }
 
 
-
 function getFormattedPrice(numStr) {
     // Remove commas
     const num = getNumNoCommas(numStr)
