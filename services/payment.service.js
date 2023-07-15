@@ -45,7 +45,6 @@ function computePayment(amount, isPartials) {
     }
 
     if (amount > 1134660) {
-        // return
         var isMin
         const limit = 1134660
         const diff = amount - limit
