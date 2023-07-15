@@ -3,6 +3,7 @@
 navigator.serviceWorker.register('./sw.js')
 var gPrevInputValue = ''
 var gResult = null
+var gIsDetails = false
 
 function onCompute(ev) {
     ev.preventDefault()
@@ -43,6 +44,7 @@ function handleInput(elInput) {
 
 function onRenderPartials() {
     let str = ''
+    
     if (!gResult) return
     if (!gResult.isMin) {
         gResult.partials.forEach((partial, idx) => {
@@ -56,7 +58,7 @@ function onRenderPartials() {
 
     document.querySelector('.partials').innerHTML = str
     document.querySelector('.partials').classList.remove('hidden')
-
+    document.querySelector('.copy-url-btn').classList.add('hidden')
 }
 
 
@@ -72,7 +74,7 @@ function hideModal() {
     elModal.querySelector('.result span').innerText = ''
     document.querySelector('input').value = ''
     gResult = null
-
+    document.querySelector('.copy-url-btn').classList.remove('hidden')
 }
 
 
