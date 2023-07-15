@@ -32,13 +32,22 @@ main {
 .result-modal {
     width: 100%;
     display: flex;
-    font-size: 4em;
+
     flex-direction: column;
     padding-top: 10vh;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
 }
+
+.result {
+    font-size: 4em;
+}
+
+.msg {
+    font-size: 1em;
+}
+
 .result span {
     direction: rtl;
     white-space: nowrap;

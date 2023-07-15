@@ -17,12 +17,18 @@ function onCompute(ev) {
 
 
 function renderResult(res) {
+    const elMsgSpan = document.querySelector('.msg span')
     const elResSpan = document.querySelector('.result span')
-    if (!res) elResSpan.innerHTML = 'על פי ההסכם לגבי מדרגות הבאות'
-    else {
+    if (!res) {
+        elMsgSpan.innerHTML = 'על פי ההסכם לגבי המדרגות הבאות'
+        elResSpan.innerHTML = ''
+        gResult = null
+    } else {
         gResult = res
+        elMsgSpan.innerHTML = ''
         elResSpan.innerHTML = '&#8362; ' + numberWithCommas(res.value)
     }
+
     showModal()
 
 }
@@ -37,6 +43,7 @@ function handleInput(elInput) {
 
 function onRenderPartials() {
     let str = ''
+    if (!gResult) return
     if (!gResult.isMin) {
         gResult.partials.forEach((partial, idx) => {
             const plus = idx === gResult.partials.length - 1 ? '' : ' &#43;  '
