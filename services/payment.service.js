@@ -5,18 +5,11 @@
 
 
 function computePayment(amount) {
+    if (amount > 15000000) return getStairCompute(15000000, 0.01, amount)
 
-    if (amount > 15000000) {
-        return getStairCompute(15000000, 0.01, amount)
-    }
+    if (amount > 5000000) return getStairCompute(5000000, 0.02, amount)
 
-    if (amount > 5000000) {
-        return getStairCompute(5000000, 0.02, amount)
-    }
-
-    if (amount > 1134660) {
-        return getStairCompute(1134660, 0.03, amount)
-    }
+    if (amount > 1134660) return getStairCompute(1134660, 0.03, amount)
 
     if (amount > 115463) {
         const limit = 115463

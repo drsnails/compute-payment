@@ -9,7 +9,6 @@ function onCompute(ev) {
     ev.preventDefault()
     const elInput = document.querySelector('input')
     const amount = getNumNoCommas(elInput.value)
-    console.log('amount:', amount)
     if (!amount) return
     const res = computePayment(amount)
     renderResult(res)
