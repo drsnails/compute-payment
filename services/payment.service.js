@@ -96,7 +96,6 @@ async function doUploadImg(imgData, onSuccess) {
             body: formData
         })
         const data = await res.json()
-        console.log('data', data);
         onSuccess(data.secure_url)
 
     } catch (err) {

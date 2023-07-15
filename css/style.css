@@ -174,3 +174,19 @@ button {
 .hidden {
     display: none;
 }
+
+
+.loader {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    height: 100px;
+    width: 150px;
+    
+}
+
+svg {
+    fill: black;
+    width: 150px;
+
+}
