@@ -47,7 +47,7 @@ function onRenderPartials() {
     if (!gResult.isMin) {
         gResult.partials.forEach((partial, idx) => {
             const plus = idx === gResult.partials.length - 1 ? '' : ' &#43;  '
-            str += `&nbsp;${partial.percent * 100}% &#215; ${numberWithCommas(partial.value)}&nbsp;` + plus
+            str += `<p>&nbsp;${partial.percent * 100}% &#215; ${numberWithCommas(partial.value)}&nbsp;` + plus + '</p>'
         })
     } else {
         // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
