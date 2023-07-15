@@ -43,7 +43,7 @@ function getStairCompute(limit, percent, amount) {
     let res = { value: diff * percent, partials: [{ value: diff, percent }] }
     const { value, partials } = computePayment(limit)
     res.value += value
-    res.partials.push(...partials)
+    res.partials.unshift(...partials)
     return { value: res.value, partials: res.partials }
 }
 
