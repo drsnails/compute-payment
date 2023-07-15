@@ -38,11 +38,14 @@ main {
     color: #ffffff;
     display: flex;
     font-size: 20px;
+    align-items: center;
     justify-content: center;
     background-color: transparent;
     padding: 1rem 1.75rem;
     text-decoration: none;
     color: black;
+    height: 50px;
+    margin-bottom: 60px;
     /* width: 50%; */
     /* border: 0; */
     cursor: pointer;
@@ -61,6 +64,7 @@ main {
 
 .result {
     font-size: 4em;
+    padding: 10px;
 }
 
 .msg {
