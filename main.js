@@ -4,6 +4,7 @@ navigator.serviceWorker.register('./sw.js')
 var gPrevInputValue = ''
 var gResult = null
 var gIsDetails = false
+var gIsModalOpen = false
 
 function onCompute(ev) {
     ev.preventDefault()
@@ -12,7 +13,7 @@ function onCompute(ev) {
     if (!amount) return
     const res = computePayment(amount)
     renderResult(res)
-    document.querySelector('.copy-url-btn').classList.remove('hidden')
+    gIsModalOpen = false
 }
 
 
@@ -42,22 +43,29 @@ function handleInput(elInput) {
 }
 
 function onRenderPartials() {
-    let str = ''
-    
-    if (!gResult) return
-    if (!gResult.isMin) {
-        gResult.partials.forEach((partial, idx) => {
-            const plus = idx === gResult.partials.length - 1 ? '' : ' &#43;  '
-            str += `<p>&nbsp;${partial.percent * 100}% &#215; ${numberWithCommas(partial.value)}&nbsp;` + plus + '</p>'
-        })
+    if (gIsModalOpen) {
+        document.querySelector('.partials').classList.add('hidden')
+        gIsModalOpen = false
     } else {
-        // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
-        str = numberWithCommas(gResult.value) + '(minimum)'
+        gIsModalOpen = true
+        let str = ''
+
+        if (!gResult) return
+        if (!gResult.isMin) {
+            gResult.partials.forEach((partial, idx) => {
+                const plus = idx === gResult.partials.length - 1 ? '' : ' &#43;  '
+                str += `<p>&nbsp;${partial.percent * 100}% &#215; ${numberWithCommas(partial.value)}&nbsp;` + plus + '</p>'
+            })
+        } else {
+            // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
+            str = numberWithCommas(gResult.value) + '(minimum)'
+        }
+
+        document.querySelector('.partials').innerHTML = str
+        document.querySelector('.partials').classList.remove('hidden')
     }
 
-    document.querySelector('.partials').innerHTML = str
-    document.querySelector('.partials').classList.remove('hidden')
-    document.querySelector('.copy-btn-container').classList.add('hidden')
+
 }
 
 
@@ -73,7 +81,7 @@ function hideModal() {
     elModal.querySelector('.result span').innerText = ''
     document.querySelector('input').value = ''
     gResult = null
-    document.querySelector('.copy-btn-container').classList.remove('hidden')
+    // document.querySelector('.copy-btn-container').classList.remove('hidden')
 }
 
 

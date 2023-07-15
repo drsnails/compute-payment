@@ -13,27 +13,37 @@
 <body>
     <script src="./lib/html2canvas.min.js"></script>
     <main class="container">
-        <section class="copy-btn-container">
+        <!-- <section class="copy-btn-container">
             <button class="copy-url-btn" onclick="copyUrlToClipboard()">העתק כתובת
                 אפליקציה
             </button>
+        </section> -->
+
+        <section class="top-container">
+            <section class="result-modal hidden">
+                <p class="result"><span></span></p>
+                <p class="msg"><span></span></p>
+                <section class="btns">
+                    <button onclick="onRenderPartials()" class="btn">פרט</button>
+                    <button onclick="hideModal()" class="btn">בטל</button>
+                </section>
+                <p class="partials"></p>
+            </section>
         </section>
 
-        <section class="result-modal hidden">
-            <p class="result"><span></span></p>
-            <p class="msg"><span></span></p>
-            <section class="btns">
-                <button onclick="onRenderPartials()" class="btn">פרט</button>
-                <button onclick="hideModal()" class="btn">בטל</button>
+        <section class="input-btns-container">
+            <form onsubmit="onCompute(event)" class="inputs-container">
+                <button class="btn">חשב</button>
+                <input oninput="handleInput(this)" type="tel">
+            </form>
+            <!-- <a href="whatsapp://send?text=Screenshot&file=' + imageData + '">Share on WhatsApp</a> -->
+            <section class="share-btns-container">
+                <button class="btn share" onclick="onShare()">שתף</button>
+                <button class="copy-url-btn" onclick="copyUrlToClipboard()">העתק כתובת
+                </button>
             </section>
-            <p class="partials"></p>
         </section>
-        <form onsubmit="onCompute(event)" class="inputs-container">
-            <button class="btn">חשב</button>
-            <input oninput="handleInput(this)" type="tel">
-        </form>
-        <!-- <a href="whatsapp://send?text=Screenshot&file=' + imageData + '">Share on WhatsApp</a> -->
-        <button class="btn share" onclick="onShare()">שתף</button>
+
     </main>
     <script src="services/payment.service.js"></script>
     <script src=main.js></script>

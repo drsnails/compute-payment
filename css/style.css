@@ -23,19 +23,33 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    /* padding-bottom: 20vh; */
+    /* justify-content: space-evenly; */
+    /* padding-bottom: 10vh; */
     /* height: 100%; */
     min-height: 100vh;
     max-width: 1000px;
 }
 
-.copy-btn-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.top-container {
+    /* flex-grow: 5; */
+    min-height: 70vh;
 }
 
+.input-btns-container {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    min-height: 30vh;
+}
+
+.share-btns-container {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+}
 .copy-url-btn {
     /* position: fixed; */
     /* top: 20px; */
@@ -46,8 +60,9 @@ main {
     display: flex;
     font-size: 20px;
     justify-content: center;
+    align-items: center;
     background-color: transparent;
-    padding: 1rem 1.75rem;
+    /* padding: 1rem 1.75rem; */
     text-decoration: none;
     color: black;
     /* width: 50%; */
@@ -66,7 +81,7 @@ main {
 }
 
 .result {
-    font-size: 3.5em;
+    font-size: 3em;
     margin-inline: 10px;
     padding: 5px;
     /* padding-top: 15px; */
@@ -124,7 +139,7 @@ button {
 }
 
 .btn.share {
-    margin-top: 40px;
+    /* margin-top: 40px; */
     padding: 0.75rem 1.5rem;
     background-image: linear-gradient(-180deg, #0aaa40 0%, #0fa85b 100%);
 }
