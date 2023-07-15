@@ -13,7 +13,7 @@ function onCompute(ev) {
     if (!amount) return
     const res = computePayment(amount)
     renderResult(res)
-
+    document.querySelector('.copy-url-btn').classList.remove('hidden')
 }
 
 
