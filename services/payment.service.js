@@ -107,6 +107,11 @@ async function doUploadImg(imgData, onSuccess) {
 const copyUrlToClipboard = async (text = 'https://drsnails.github.io/compute-payment/') => {
     try {
         await navigator.clipboard.writeText(text)
+        const elMsg = document.querySelector('section.msg')
+        elMsg.classList.remove('hide')
+        setTimeout(() => {
+            elMsg.classList.add('hide')
+        }, 2000);
     } catch (err) {
         console.error('Failed to copy: ', err)
     }

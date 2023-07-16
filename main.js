@@ -85,15 +85,18 @@ function hideModal() {
 }
 
 
-function onShare() {
+function onShare(to = 'whatsapp') {
+
     const elLoader = document.querySelector('.loader')
     elLoader.classList.remove('hidden')
     html2canvas(document.body, { ignoreElements: (el) => el.classList.contains('loader') }).then(function (canvas) {
         const imageData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         doUploadImg(imageData, (url) => {
             elLoader.classList.add('hidden')
-            const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(url)}&file=${encodeURIComponent(url)}`
-            window.open(whatsappUrl, "_blank");
+            let urlToShare
+            if (to === 'whatsapp') urlToShare = `whatsapp://send?text=${encodeURIComponent(url)}&file=${encodeURIComponent(url)}`
+            else if (to ==='gmail') urlToShare = `mailto:?subject=&body=${encodeURIComponent(url)}`
+            window.open(urlToShare, "_blank");
         })
     });
 }

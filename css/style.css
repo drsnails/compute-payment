@@ -140,9 +140,22 @@ button {
 
 .btn.share {
     /* margin-top: 40px; */
-    padding: 0.75rem 1.5rem;
-    background-image: linear-gradient(-180deg, #0aaa40 0%, #0fa85b 100%);
+    padding: 0.2rem 0.4rem;
+    /* background-image: linear-gradient(-180deg, #0aaa40 0%, #0fa85b 100%); */
+    background: white;
+    border: solid 1px #7ad16d;
+    color: #6dbc61;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.btn.share.mail {
+    background: #fff;
+    border: solid 1px #de5245;
+    color: #de5245;
+}
+
 .partials {
     font-size: 20px;
     direction: ltr;
@@ -158,7 +171,13 @@ button {
     background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
 }
 .btn.share:hover {
-    background-image: linear-gradient(-180deg, #1cd55a 0%, #28ab69 100%);
+    /* background-image: linear-gradient(-180deg, #1cd55a 0%, #28ab69 100%); */
+    background: #fbfffa;
+
+}
+
+.btn.share.mail:hover {
+    background: #fffafa;
 }
 
 @media (min-width: 768px) {
@@ -175,18 +194,42 @@ button {
     display: none;
 }
 
-
 .loader {
     position: fixed;
     inset: 0;
     margin: auto;
     height: 100px;
     width: 150px;
-    
 }
 
 svg {
     fill: black;
     width: 150px;
+}
+
+.share svg {
+    width: 22px;
+    height: 22px;
+}
+
+section.msg {
+    background-color: #7ed892;
+    padding: 10px 20px;
+    color: rgb(34, 34, 34);
+    border-radius: 3px;
+    position: fixed;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    transition: .4s top;
+
+}
+
+
+section.msg.hide {
+    /* position: fixed; */
+    top: -45px;
+    transition: .4s top;
 
 }
