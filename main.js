@@ -89,7 +89,7 @@ function onShare(to = 'whatsapp') {
     const elLoader = document.querySelector('.loader')
     elLoader.classList.remove('hidden')
     html2canvas(document.body, {
-        ignoreElements: (el) => el.classList.contains('loader') || el.classList.contains('share-btns-container') || el.classList.contains('btns')
+        ignoreElements: (el) => el.classList.contains('loader') || el.classList.contains('share-btns-container') || el.classList.contains('btns') || el.classList.contains('msg')
     }).then(function (canvas) {
         const imageData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         doUploadImg(imageData, (url) => {
