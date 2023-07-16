@@ -143,7 +143,7 @@ button {
     padding: 0.2rem 0.4rem;
     /* background-image: linear-gradient(-180deg, #0aaa40 0%, #0fa85b 100%); */
     background: white;
-    border: solid 1px #7ad16d;
+    border: solid 2px #7ad16d;
     color: #6dbc61;
     display: flex;
     align-items: center;
@@ -152,7 +152,7 @@ button {
 
 .btn.share.mail {
     background: #fff;
-    border: solid 1px #de5245;
+    border: solid 2px #de5245;
     color: #de5245;
 }
 
