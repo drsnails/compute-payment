@@ -86,16 +86,17 @@ function hideModal() {
 
 
 function onShare(to = 'whatsapp') {
-
     const elLoader = document.querySelector('.loader')
     elLoader.classList.remove('hidden')
-    html2canvas(document.body, { ignoreElements: (el) => el.classList.contains('loader') }).then(function (canvas) {
+    html2canvas(document.body, {
+        ignoreElements: (el) => el.classList.contains('loader') || el.classList.contains('share-btns-container') || el.classList.contains('btns')
+    }).then(function (canvas) {
         const imageData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         doUploadImg(imageData, (url) => {
             elLoader.classList.add('hidden')
             let urlToShare
             if (to === 'whatsapp') urlToShare = `whatsapp://send?text=${encodeURIComponent(url)}&file=${encodeURIComponent(url)}`
-            else if (to ==='gmail') urlToShare = `mailto:?subject=&body=${encodeURIComponent(url)}`
+            else if (to === 'gmail') urlToShare = `mailto:?subject=&body=${encodeURIComponent(url)}`
             window.open(urlToShare, "_blank");
         })
     });
