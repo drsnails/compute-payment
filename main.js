@@ -13,7 +13,7 @@ function onCompute(ev) {
     if (!amount) return
     const res = computePayment(amount)
     renderResult(res)
-    gIsModalOpen = false
+    // gIsModalOpen = false
 }
 
 
@@ -30,13 +30,15 @@ function renderResult(res) {
         elResSpan.innerHTML = '&#8362; ' + numberWithCommas(res.value)
     }
 
+    gIsModalOpen = true
     showModal()
-    onRenderPartials()
+    handlePartialDisplay()
 }
 
 
 function handlePartialDisplay(elBtn) {
     onRenderPartials()
+   if (!elBtn) elBtn = document.querySelector('.btn.details-btn')
     elBtn.innerHTML = gIsModalOpen ? 'הסתר &#x25B2;' : 'פרט &#x25BC;'
     gIsModalOpen = !gIsModalOpen
 }
