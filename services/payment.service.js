@@ -5,23 +5,33 @@
 
 
 function computePayment(amount) {
-    if (amount > 15000000) return getStairCompute(15000000, 0.01, amount)
 
-    if (amount > 5000000) return getStairCompute(5000000, 0.02, amount)
+    //TODO - Continue updating new values for 5M and 15M
+    if (amount > 15_000_000) return getStairCompute(15_000_000, 0.01, amount)
 
-    if (amount > 1134660) return getStairCompute(1134660, 0.03, amount)
+    if (amount > 5_000_000) return getStairCompute(5_000_000, 0.02, amount)
 
-    if (amount > 115463) {
-        const limit = 115463
+    if (amount > 1_212_532) {
+        const computedSum = getStairCompute(1_212_532, 0.03, amount)
+        if (computedSum.value < 56_805) {
+            computedSum.value = 56_805
+            computedSum.isMin = true
+        }
+       
+        return computedSum
+    }
+
+    if (amount > 123_387) {
+        const limit = 123_387
         const diff = amount - limit
         return { value: limit * 0.1 + diff * 0.04, partials: [{ value: limit, percent: 0.1 }, { value: diff, percent: 0.04 }] }
     }
 
-    if (amount > 28403) {
+    if (amount > 30_353) {
         let isMin
         let res = amount * 0.1
-        if (res < 4268) {
-            res = 4268
+        if (res < 4561) {
+            res = 4561
             isMin = true
         }
         return { value: res, partials: [{ value: amount, percent: 0.1 }], isMin }
@@ -29,8 +39,8 @@ function computePayment(amount) {
     if (amount > 0) {
         let isMin
         let res = amount * 0.15
-        if (res < 815) {
-            res = 815
+        if (res < 914) {
+            res = 914
             isMin = true
         }
         return { value: res, partials: [{ value: amount, percent: 0.15 }], isMin }

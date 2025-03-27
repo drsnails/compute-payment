@@ -58,7 +58,7 @@ function onRenderPartials() {
             })
         } else {
             // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
-            str = numberWithCommas(gResult.value) + '(minimum)'
+            str = numberWithCommas(gResult.value) + ' (minimum)'
         }
 
         document.querySelector('.partials').innerHTML = str
