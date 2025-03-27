@@ -1,6 +1,6 @@
 console.log('Service Worker Registered!');
 
-let CACHE_NAME = 'lawyers-fee-cache-v16';  // Update the version when you want to push new content
+let CACHE_NAME = 'lawyers-fee-cache-v20';  // Update the version when you want to push new content
 
 const urlsToCache = [
     'https://drsnails.github.io/compute-payment/',
