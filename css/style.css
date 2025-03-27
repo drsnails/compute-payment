@@ -156,6 +156,13 @@ button {
     color: #de5245;
 }
 
+
+.btn.details-btn {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
 .partials {
     font-size: 20px;
     direction: ltr;

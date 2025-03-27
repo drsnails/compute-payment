@@ -4,7 +4,7 @@ navigator.serviceWorker.register('./sw.js')
 var gPrevInputValue = ''
 var gResult = null
 var gIsDetails = false
-var gIsModalOpen = false
+var gIsModalOpen = true
 
 function onCompute(ev) {
     ev.preventDefault()
@@ -31,7 +31,14 @@ function renderResult(res) {
     }
 
     showModal()
+    onRenderPartials()
+}
 
+
+function handlePartialDisplay(elBtn) {
+    onRenderPartials()
+    elBtn.innerHTML = gIsModalOpen ? 'הסתר &#x25B2;' : 'פרט &#x25BC;'
+    gIsModalOpen = !gIsModalOpen
 }
 
 
@@ -43,11 +50,9 @@ function handleInput(elInput) {
 }
 
 function onRenderPartials() {
-    if (gIsModalOpen) {
+    if (!gIsModalOpen) {
         document.querySelector('.partials').classList.add('hidden')
-        gIsModalOpen = false
     } else {
-        gIsModalOpen = true
         let str = ''
 
         if (!gResult) return
