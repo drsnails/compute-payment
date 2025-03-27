@@ -4,6 +4,187 @@
 
 
 
+
+function unitTesting(options) {
+    const { func, inputs, expected } = options
+    console.time('Time')
+    const res = func(...inputs)
+    const isPassed = JSON.stringify(res) === JSON.stringify(expected)
+    console.group(func.name)
+    console.log(`%c${isPassed ? '✅ PASSED ✅' : '❗️FAILED❗️'}`, `color: ${isPassed ? 'lime' : 'orangered'}`)
+    console.log(
+        'INPUT:', ...inputs,
+        '\nEXPECTED:', expected,
+        '\nACTUAL:', res
+    )
+    console.timeEnd('Time')
+    console.groupEnd(func.name)
+    console.log('')
+}
+
+unitTesting({
+    func: computePayment,
+    inputs: [3500],
+    expected: {
+        "value": 914,
+        "partials": [
+            {
+                "value": 3500,
+                "percent": 0.15
+            }
+        ],
+        "isMin": true
+    }
+})
+
+unitTesting({
+    func: computePayment,
+    inputs: [31_000],
+    expected: {
+        "value": 4561,
+        "partials": [
+            {
+                "value": 31000,
+                "percent": 0.1
+            }
+        ],
+        "isMin": true
+    }
+})
+
+unitTesting({
+    func: computePayment,
+    inputs: [95_000],
+    expected: {
+        "value": 9500,
+        "partials": [
+            {
+                "value": 95000,
+                "percent": 0.1
+            }
+        ]
+    }
+})
+
+
+unitTesting({
+    func: computePayment,
+    inputs: [140_000],
+    expected: {
+        "value": 13003.220000000001,
+        "partials": [
+            {
+                "value": 123387,
+                "percent": 0.1
+            },
+            {
+                "value": 16613,
+                "percent": 0.04
+            }
+        ]
+    }
+})
+
+unitTesting({
+    func: computePayment,
+    inputs: [1_230_000],
+    expected: {
+        "value": 56805,
+        "partials": [
+            {
+                "value": 123387,
+                "percent": 0.1
+            },
+            {
+                "value": 1089145,
+                "percent": 0.04
+            },
+            {
+                "value": 17468,
+                "percent": 0.03
+            }
+        ],
+        "isMin": true
+    }
+})
+
+unitTesting({
+    func: computePayment,
+    inputs: [1_400_000],
+    expected: {
+        "value": 61528.54,
+        "partials": [
+            {
+                "value": 123387,
+                "percent": 0.1
+            },
+            {
+                "value": 1089145,
+                "percent": 0.04
+            },
+            {
+                "value": 187468,
+                "percent": 0.03
+            }
+        ]
+    }
+})
+
+unitTesting({
+    func: computePayment,
+    inputs: [14_000_000],
+    expected: {
+        "value": 349528.54,
+        "partials": [
+            {
+                "value": 123387,
+                "percent": 0.1
+            },
+            {
+                "value": 1089145,
+                "percent": 0.04
+            },
+            {
+                "value": 3787468,
+                "percent": 0.03
+            },
+            {
+                "value": 9000000,
+                "percent": 0.02
+            }
+        ]
+    }
+})
+unitTesting({
+    func: computePayment,
+    inputs: [24_000_000],
+    expected: {
+        "value": 459528.54,
+        "partials": [
+            {
+                "value": 123387,
+                "percent": 0.1
+            },
+            {
+                "value": 1089145,
+                "percent": 0.04
+            },
+            {
+                "value": 3787468,
+                "percent": 0.03
+            },
+            {
+                "value": 10000000,
+                "percent": 0.02
+            },
+            {
+                "value": 9000000,
+                "percent": 0.01
+            }
+        ]
+    }
+})
+
 function computePayment(amount) {
 
     //TODO - Continue updating new values for 5M and 15M
@@ -17,36 +198,15 @@ function computePayment(amount) {
             computedSum.value = 56_805
             computedSum.isMin = true
         }
-       
         return computedSum
     }
 
-    if (amount > 123_387) {
-        const limit = 123_387
-        const diff = amount - limit
-        return { value: limit * 0.1 + diff * 0.04, partials: [{ value: limit, percent: 0.1 }, { value: diff, percent: 0.04 }] }
-    }
+    if (amount > 123_387) return getStairCompute(123_387, 0.04, amount)
 
-    if (amount > 30_353) {
-        let isMin
-        let res = amount * 0.1
-        if (res < 4561) {
-            res = 4561
-            isMin = true
-        }
-        return { value: res, partials: [{ value: amount, percent: 0.1 }], isMin }
-    }
-    if (amount > 0) {
-        let isMin
-        let res = amount * 0.15
-        if (res < 914) {
-            res = 914
-            isMin = true
-        }
-        return { value: res, partials: [{ value: amount, percent: 0.15 }], isMin }
-    }
+    if (amount > 30_353) return getSimpleTaxCompute({ amount, percent: 0.1, minimum: 4561 })
+
+    if (amount > 0) return getSimpleTaxCompute({ amount, percent: 0.15, minimum: 914 })
 }
-
 
 function getStairCompute(limit, percent, amount) {
     const diff = amount - limit
@@ -57,6 +217,17 @@ function getStairCompute(limit, percent, amount) {
     return { value: res.value, partials: res.partials }
 }
 
+function getSimpleTaxCompute({ amount, percent, minimum }) {
+    let isMin
+    let res = amount * percent
+    if (res < minimum) {
+        res = minimum
+        isMin = true
+    }
+    return { value: res, partials: [{ value: amount, percent }], isMin }
+}
+
+
 function numberWithCommas(x) {
     x = +x.toFixed(2)
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -64,21 +235,18 @@ function numberWithCommas(x) {
 
 
 function getFormattedPrice(numStr) {
-    // Remove commas
+
     const num = getNumNoCommas(numStr)
     const newNumStr = num + ''
 
-    // Calculate the number of commas to insert
     const commaCount = Math.ceil(newNumStr.length / 3) - 1
     const digits = newNumStr.split('')
 
-    // Insert commas every three digits from the right
     for (let i = 3; i <= commaCount * 3; i += 3) {
         const commaIdx = newNumStr.length - i
         digits.splice(commaIdx, 0, ',')
     }
 
-    // Return the newly formatted number or an empty string if the number is zero
     const formattedNum = digits.join('')
     return formattedNum === '0' ? '' : formattedNum
 }
