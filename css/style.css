@@ -228,6 +228,7 @@ section.msg {
     border-radius: 3px;
     position: fixed;
     top: 10px;
+    right: 10px;
     display: flex;
     align-items: center;
     height: 40px;
