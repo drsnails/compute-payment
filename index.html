@@ -21,7 +21,7 @@
 
         <section class="top-container">
             <section class="result-modal hidden">
-                <p class="result"><span></span></p>
+                <p title="העתק" onclick="onCopyResult(this)" class="result"><span></span></p>
                 <p class="msg"><span></span></p>
                 <section class="btns">
                     <button onclick="handlePartialDisplay(this)" class="btn details-btn">הסתר &#x25B2;</button>
@@ -34,7 +34,7 @@
         <section class="input-btns-container">
             <form onsubmit="onCompute(event)" class="inputs-container">
                 <button class="btn">חשב</button>
-                <input oninput="handleInput(this)" type="tel">
+                <input oninput="handleInput(this)" type="tel" placeholder="הכנס סכום">
             </form>
             <!-- <a href="whatsapp://send?text=Screenshot&file=' + imageData + '">Share on WhatsApp</a> -->
             <section class="share-btns-container">
@@ -45,7 +45,7 @@
                 <button onclick="onShare('gmail')" class="btn share mail">
                     שתף בג׳ימייל
                 </button>
-                <button class="copy-url-btn" onclick="copyUrlToClipboard()">העתק כתובת
+                <button class="copy-url-btn" onclick="onCopyUrlToClipboard()">העתק כתובת
                 </button>
             </section>
         </section>

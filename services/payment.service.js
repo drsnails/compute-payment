@@ -3,187 +3,192 @@
 
 
 
+//----------------------- TESTS START -----------------------//
+
+// function unitTesting(options) {
+//     const { func, inputs, expected } = options
+//     console.time('Time')
+//     const res = func(...inputs)
+//     const isPassed = JSON.stringify(res) === JSON.stringify(expected)
+//     console.group(func.name)
+//     console.log(`%c${isPassed ? '✅ PASSED ✅' : '❗️FAILED❗️'}`, `color: ${isPassed ? 'lime' : 'orangered'}`)
+//     console.log(
+//         'INPUT:', ...inputs,
+//         '\nEXPECTED:', expected,
+//         '\nACTUAL:', res
+//     )
+//     console.timeEnd('Time')
+//     console.groupEnd(func.name)
+//     console.log('')
+// }
+
+// unitTesting({
+//     func: computePayment,
+//     inputs: [3500],
+//     expected: {
+//         "value": 914,
+//         "partials": [
+//             {
+//                 "value": 3500,
+//                 "percent": 0.15
+//             }
+//         ],
+//         "isMin": true
+//     }
+// })
+
+// unitTesting({
+//     func: computePayment,
+//     inputs: [31_000],
+//     expected: {
+//         "value": 4561,
+//         "partials": [
+//             {
+//                 "value": 31000,
+//                 "percent": 0.1
+//             }
+//         ],
+//         "isMin": true
+//     }
+// })
+
+// unitTesting({
+//     func: computePayment,
+//     inputs: [95_000],
+//     expected: {
+//         "value": 9500,
+//         "partials": [
+//             {
+//                 "value": 95000,
+//                 "percent": 0.1
+//             }
+//         ]
+//     }
+// })
 
 
-function unitTesting(options) {
-    const { func, inputs, expected } = options
-    console.time('Time')
-    const res = func(...inputs)
-    const isPassed = JSON.stringify(res) === JSON.stringify(expected)
-    console.group(func.name)
-    console.log(`%c${isPassed ? '✅ PASSED ✅' : '❗️FAILED❗️'}`, `color: ${isPassed ? 'lime' : 'orangered'}`)
-    console.log(
-        'INPUT:', ...inputs,
-        '\nEXPECTED:', expected,
-        '\nACTUAL:', res
-    )
-    console.timeEnd('Time')
-    console.groupEnd(func.name)
-    console.log('')
-}
+// unitTesting({
+//     func: computePayment,
+//     inputs: [140_000],
+//     expected: {
+//         "value": 13003.220000000001,
+//         "partials": [
+//             {
+//                 "value": 123387,
+//                 "percent": 0.1
+//             },
+//             {
+//                 "value": 16613,
+//                 "percent": 0.04
+//             }
+//         ]
+//     }
+// })
 
-unitTesting({
-    func: computePayment,
-    inputs: [3500],
-    expected: {
-        "value": 914,
-        "partials": [
-            {
-                "value": 3500,
-                "percent": 0.15
-            }
-        ],
-        "isMin": true
-    }
-})
+// unitTesting({
+//     func: computePayment,
+//     inputs: [1_230_000],
+//     expected: {
+//         "value": 56805,
+//         "partials": [
+//             {
+//                 "value": 123387,
+//                 "percent": 0.1
+//             },
+//             {
+//                 "value": 1089145,
+//                 "percent": 0.04
+//             },
+//             {
+//                 "value": 17468,
+//                 "percent": 0.03
+//             }
+//         ],
+//         "isMin": true
+//     }
+// })
 
-unitTesting({
-    func: computePayment,
-    inputs: [31_000],
-    expected: {
-        "value": 4561,
-        "partials": [
-            {
-                "value": 31000,
-                "percent": 0.1
-            }
-        ],
-        "isMin": true
-    }
-})
+// unitTesting({
+//     func: computePayment,
+//     inputs: [1_400_000],
+//     expected: {
+//         "value": 61528.54,
+//         "partials": [
+//             {
+//                 "value": 123387,
+//                 "percent": 0.1
+//             },
+//             {
+//                 "value": 1089145,
+//                 "percent": 0.04
+//             },
+//             {
+//                 "value": 187468,
+//                 "percent": 0.03
+//             }
+//         ]
+//     }
+// })
 
-unitTesting({
-    func: computePayment,
-    inputs: [95_000],
-    expected: {
-        "value": 9500,
-        "partials": [
-            {
-                "value": 95000,
-                "percent": 0.1
-            }
-        ]
-    }
-})
+// unitTesting({
+//     func: computePayment,
+//     inputs: [14_000_000],
+//     expected: {
+//         "value": 349528.54,
+//         "partials": [
+//             {
+//                 "value": 123387,
+//                 "percent": 0.1
+//             },
+//             {
+//                 "value": 1089145,
+//                 "percent": 0.04
+//             },
+//             {
+//                 "value": 3787468,
+//                 "percent": 0.03
+//             },
+//             {
+//                 "value": 9000000,
+//                 "percent": 0.02
+//             }
+//         ]
+//     }
+// })
+// unitTesting({
+//     func: computePayment,
+//     inputs: [24_000_000],
+//     expected: {
+//         "value": 459528.54,
+//         "partials": [
+//             {
+//                 "value": 123387,
+//                 "percent": 0.1
+//             },
+//             {
+//                 "value": 1089145,
+//                 "percent": 0.04
+//             },
+//             {
+//                 "value": 3787468,
+//                 "percent": 0.03
+//             },
+//             {
+//                 "value": 10000000,
+//                 "percent": 0.02
+//             },
+//             {
+//                 "value": 9000000,
+//                 "percent": 0.01
+//             }
+//         ]
+//     }
+// })
+
+//----------------------- ORIGINAL END -------------------------//
+//////////----------------------------------------------////////////
 
 
-unitTesting({
-    func: computePayment,
-    inputs: [140_000],
-    expected: {
-        "value": 13003.220000000001,
-        "partials": [
-            {
-                "value": 123387,
-                "percent": 0.1
-            },
-            {
-                "value": 16613,
-                "percent": 0.04
-            }
-        ]
-    }
-})
-
-unitTesting({
-    func: computePayment,
-    inputs: [1_230_000],
-    expected: {
-        "value": 56805,
-        "partials": [
-            {
-                "value": 123387,
-                "percent": 0.1
-            },
-            {
-                "value": 1089145,
-                "percent": 0.04
-            },
-            {
-                "value": 17468,
-                "percent": 0.03
-            }
-        ],
-        "isMin": true
-    }
-})
-
-unitTesting({
-    func: computePayment,
-    inputs: [1_400_000],
-    expected: {
-        "value": 61528.54,
-        "partials": [
-            {
-                "value": 123387,
-                "percent": 0.1
-            },
-            {
-                "value": 1089145,
-                "percent": 0.04
-            },
-            {
-                "value": 187468,
-                "percent": 0.03
-            }
-        ]
-    }
-})
-
-unitTesting({
-    func: computePayment,
-    inputs: [14_000_000],
-    expected: {
-        "value": 349528.54,
-        "partials": [
-            {
-                "value": 123387,
-                "percent": 0.1
-            },
-            {
-                "value": 1089145,
-                "percent": 0.04
-            },
-            {
-                "value": 3787468,
-                "percent": 0.03
-            },
-            {
-                "value": 9000000,
-                "percent": 0.02
-            }
-        ]
-    }
-})
-unitTesting({
-    func: computePayment,
-    inputs: [24_000_000],
-    expected: {
-        "value": 459528.54,
-        "partials": [
-            {
-                "value": 123387,
-                "percent": 0.1
-            },
-            {
-                "value": 1089145,
-                "percent": 0.04
-            },
-            {
-                "value": 3787468,
-                "percent": 0.03
-            },
-            {
-                "value": 10000000,
-                "percent": 0.02
-            },
-            {
-                "value": 9000000,
-                "percent": 0.01
-            }
-        ]
-    }
-})
 
 function computePayment(amount) {
 
@@ -252,7 +257,7 @@ function getFormattedPrice(numStr) {
 }
 
 function getNumNoCommas(numStr) {
-    return +(numStr).replaceAll(',', '')
+    return +(numStr).replaceAll(',', '').replaceAll('₪ ', '')
 }
 
 function hasNonDigitChars(str) {
@@ -282,16 +287,12 @@ async function doUploadImg(imgData, onSuccess) {
 }
 
 
-const copyUrlToClipboard = async (text = 'https://drsnails.github.io/compute-payment/') => {
+async function copyToClipboard(text) {
     try {
         await navigator.clipboard.writeText(text)
-        const elMsg = document.querySelector('section.msg')
-        elMsg.classList.remove('hide')
-        setTimeout(() => {
-            elMsg.classList.add('hide')
-        }, 2000);
     } catch (err) {
-        console.error('Failed to copy: ', err)
+        throw err
     }
+
 }
 

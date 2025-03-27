@@ -38,7 +38,7 @@ function renderResult(res) {
 
 function handlePartialDisplay(elBtn) {
     onRenderPartials()
-   if (!elBtn) elBtn = document.querySelector('.btn.details-btn')
+    if (!elBtn) elBtn = document.querySelector('.btn.details-btn')
     elBtn.innerHTML = gIsModalOpen ? 'הסתר &#x25B2;' : 'פרט &#x25BC;'
     gIsModalOpen = !gIsModalOpen
 }
@@ -65,7 +65,7 @@ function onRenderPartials() {
             })
         } else {
             // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
-            str = numberWithCommas(gResult.value) + ' (minimum)'
+            str = numberWithCommas(gResult.value) + ' (מינימום)'
         }
 
         document.querySelector('.partials').innerHTML = str
@@ -89,6 +89,40 @@ function hideModal() {
     document.querySelector('input').value = ''
     gResult = null
     // document.querySelector('.copy-btn-container').classList.remove('hidden')
+}
+
+
+
+const onCopyUrlToClipboard = async (text = 'https://drsnails.github.io/compute-payment/') => {
+    try {
+        await copyToClipboard(text)
+        flashMsg('כתובת הועתקה בהצלחה')
+    } catch (err) {
+        console.error('Failed to copy: ', err)
+    }
+}
+
+
+async function onCopyResult(elResult) {
+    const num = getNumNoCommas(elResult.innerText)
+    try {
+        await copyToClipboard(num)
+        flashMsg('סכום הועתק בהצלחה')
+    } catch (err) {
+        console.error('Failed to copy: ', err)
+    }
+
+}
+
+
+
+function flashMsg(msg) {
+    const elMsg = document.querySelector('section.msg')
+    elMsg.querySelector('span').innerText = msg
+    elMsg.classList.remove('hide')
+    setTimeout(() => {
+        elMsg.classList.add('hide')
+    }, 2000);
 }
 
 
