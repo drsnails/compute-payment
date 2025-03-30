@@ -192,10 +192,9 @@
 
 function computePayment(amount) {
 
-    //TODO - Continue updating new values for 5M and 15M
-    if (amount > 15_000_000) return getStairCompute(15_000_000, 0.01, amount)
+    if (amount > 16_033_501) return getStairCompute(16_033_501, 0.01, amount)
 
-    if (amount > 5_000_000) return getStairCompute(5_000_000, 0.02, amount)
+    if (amount > 5_344_500) return getStairCompute(5_344_500, 0.02, amount)
 
     if (amount > 1_212_532) {
         const computedSum = getStairCompute(1_212_532, 0.03, amount)
