@@ -1,6 +1,6 @@
 console.log('Service Worker Registered!');
 
-let CACHE_NAME = 'lawyers-fee-cache-v22';  // Update the version when you want to push new content
+let CACHE_NAME = 'lawyers-fee-cache-v23';  // Update the version when you want to push new content
 
 const urlsToCache = [
     'https://drsnails.github.io/compute-payment/',
@@ -44,24 +44,34 @@ self.addEventListener('fetch', event => {
     }
 
     event.respondWith(
-        caches.match(event.request)
+        fetch(event.request)
             .then(response => {
-                if (response) {
-                    console.log(event.request.url, 'FOUND IN CACHE');
+                if (!response || response.status !== 200 || response.type !== 'basic') {
                     return response;
                 }
-                console.log(event.request.url, '- NOT IN CACHE, FETCHED FROM NETWORK!');
-                return fetch(event.request).then(response => {
-                    if (!response || response.status !== 200 || response.type !== 'basic') {
-                        return response;
-                    }
-                    let responseToCache = response.clone();
-                    caches.open(CACHE_NAME)
-                        .then(cache => {
-                            cache.put(event.request, responseToCache);
+                let responseToCache = response.clone();
+                caches.open(CACHE_NAME)
+                    .then(cache => {
+                        cache.put(event.request, responseToCache);
+                    });
+                return response;
+            })
+            .catch(() => {
+                return caches.match(event.request)
+                    .then(response => {
+                        if (response) {
+                            console.log(event.request.url, 'FOUND IN CACHE (FALLBACK)');
+                            return response;
+                        }
+                        console.log(event.request.url, '- NOT IN CACHE, FETCH FAILED!');
+                        return new Response('Network error occurred', {
+                            status: 503,
+                            statusText: 'Service Unavailable',
+                            headers: new Headers({
+                                'Content-Type': 'text/plain',
+                            }),
                         });
-                    return response;
-                });
+                    });
             })
     );
 });
