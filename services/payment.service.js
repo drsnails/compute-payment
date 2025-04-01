@@ -134,7 +134,7 @@
 //     func: computePayment,
 //     inputs: [14_000_000],
 //     expected: {
-//         "value": 349528.54,
+//         "value": 352973.54,
 //         "partials": [
 //             {
 //                 "value": 123387,
@@ -145,11 +145,11 @@
 //                 "percent": 0.04
 //             },
 //             {
-//                 "value": 3787468,
+//                 "value": 4131968,
 //                 "percent": 0.03
 //             },
 //             {
-//                 "value": 9000000,
+//                 "value": 8655500,
 //                 "percent": 0.02
 //             }
 //         ]
@@ -159,7 +159,7 @@
 //     func: computePayment,
 //     inputs: [24_000_000],
 //     expected: {
-//         "value": 459528.54,
+//         "value": 473308.55,
 //         "partials": [
 //             {
 //                 "value": 123387,
@@ -170,15 +170,15 @@
 //                 "percent": 0.04
 //             },
 //             {
-//                 "value": 3787468,
+//                 "value": 4131968,
 //                 "percent": 0.03
 //             },
 //             {
-//                 "value": 10000000,
+//                 "value": 10689001,
 //                 "percent": 0.02
 //             },
 //             {
-//                 "value": 9000000,
+//                 "value": 7966499,
 //                 "percent": 0.01
 //             }
 //         ]
