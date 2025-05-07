@@ -207,7 +207,7 @@ function computePayment(amount) {
 
     if (amount > 123_387) return getStairCompute(123_387, 0.04, amount)
 
-    if (amount > 30_353) return getSimpleTaxCompute({ amount, percent: 0.1, minimum: 4561 })
+    if (amount > 30_353) return getStairCompute(30_353, 0.1, amount)
 
     if (amount > 0) return getSimpleTaxCompute({ amount, percent: 0.15, minimum: 914 })
 }
