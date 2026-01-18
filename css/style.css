@@ -53,6 +53,7 @@ main {
     gap: 10px;
     margin-top: 50px;
 }
+
 .copy-url-btn {
     /* position: fixed; */
     /* top: 20px; */
@@ -66,7 +67,7 @@ main {
     align-items: center;
     background-color: transparent;
     text-decoration: none;
-   
+
     cursor: pointer;
 }
 
@@ -83,6 +84,7 @@ main {
 .result {
     font-size: 3em;
     margin-inline: 10px;
+    margin-top: 10px;
     padding: 5px;
     cursor: pointer;
 }
@@ -112,9 +114,11 @@ button {
     width: 100%;
     padding-top: 15px;
 }
+
 .inputs-container .btn {
     width: 40%;
 }
+
 .inputs-container input {
     width: 60%;
     text-align: center;
@@ -169,16 +173,43 @@ button {
     font-size: 20px;
     direction: ltr;
     white-space: nowrap;
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '';
+        bottom: -20%;
+    }
+
+    &.singular::after {
+        position: absolute;
+        content: ' = ';
+        margin: auto;
+        inset-inline: 0;
+        left: 50%;
+        transform: translateX(-10%);
+        bottom: -30%;
+    }
+
+    &.multiple&::after {
+        height: 2px;
+        background-color: white;
+        inset-inline: -30%;
+        bottom: -10%;
+    }
 }
 
 .btns {
     display: flex;
     gap: 20px;
+    margin-bottom: 15px;
+
 }
 
 .btn:hover {
     background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
 }
+
 .btn.share:hover {
     /* background-image: linear-gradient(-180deg, #1cd55a 0%, #28ab69 100%); */
     background: #fbfffa;
@@ -290,6 +321,7 @@ section.msg.hide {
     from {
         transform: translate(-50%, -100%);
     }
+
     to {
         transform: translate(-50%, 0);
     }

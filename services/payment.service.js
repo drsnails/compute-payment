@@ -18,8 +18,10 @@ function computePayment(amount) {
         return computedSum
     }
 
-    if (amount > 126_293) {
-        const computedSum = getStairCompute(126_293, 0.04, amount)
+    if (amount > 126_293) return getStairCompute(126_293, 0.04, amount)
+
+    if (amount > 31_068) {
+        const computedSum = getStairCompute(31_068, 0.1, amount)
         if (computedSum.value < 4_668) {
             computedSum.value = 4_668
             computedSum.isMin = true
@@ -27,7 +29,6 @@ function computePayment(amount) {
         return computedSum
     }
 
-    if (amount > 31_068) return getStairCompute(31_068, 0.1, amount)
 
     if (amount > 0) return getSimpleTaxCompute({ amount, percent: 0.15, minimum: 935 })
 }

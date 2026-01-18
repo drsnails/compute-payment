@@ -13,7 +13,6 @@ function onCompute(ev) {
     if (!amount) return
     const res = computePayment(amount)
     renderResult(res)
-    // gIsModalOpen = false
 }
 
 
@@ -64,12 +63,19 @@ function onRenderPartials() {
                 str += `<p>&nbsp;${partial.percent * 100}% &#215; ${numberWithCommas(partial.value)}&nbsp;` + plus + '</p>'
             })
         } else {
-            // str = `${numberWithCommas(gResult.partials[0].value)} * ${gResult.partials[0].percent*100}% is less than the minimum`
-            str = numberWithCommas(gResult.value) + ' (מינימום)'
+            // str = '(מינימום)'
+            str = '<p>(מינימום)</p>'
         }
 
-        document.querySelector('.partials').innerHTML = str
-        document.querySelector('.partials').classList.remove('hidden')
+        const elPartials = document.querySelector('.partials')
+        elPartials.classList.remove('multiple', 'singular')
+        if (gResult.partials.length > 1) {
+            elPartials.classList.add('multiple')
+        } else if (!gResult.isMin) {
+            elPartials.classList.add('singular')
+        }
+        elPartials.innerHTML = str
+        elPartials.classList.remove('hidden')
     }
 
 
@@ -88,7 +94,6 @@ function hideModal() {
     elModal.querySelector('.result span').innerText = ''
     document.querySelector('input').value = ''
     gResult = null
-    // document.querySelector('.copy-btn-container').classList.remove('hidden')
 }
 
 
@@ -147,4 +152,3 @@ function onShare(to = 'whatsapp') {
 
 
 
-// services

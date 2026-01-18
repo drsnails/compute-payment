@@ -13,21 +13,16 @@
 <body>
     <script src="./lib/html2canvas.min.js"></script>
     <main class="container">
-        <!-- <section class="copy-btn-container">
-            <button class="copy-url-btn" onclick="copyUrlToClipboard()">העתק כתובת
-                אפליקציה
-            </button>
-        </section> -->
-
+      
         <section class="top-container">
             <section class="result-modal hidden">
-                <p title="העתק" onclick="onCopyResult(this)" class="result"><span></span></p>
                 <p class="msg"><span></span></p>
                 <section class="btns">
                     <button onclick="handlePartialDisplay(this)" class="btn details-btn">הסתר &#x25B2;</button>
                     <button onclick="hideModal()" class="btn">ניקוי</button>
                 </section>
-                <p class="partials"></p>
+                <p class="partials"></p> 
+                <p title="העתק" onclick="onCopyResult(this)" class="result"><span></span></p>
             </section>
         </section>
 
@@ -36,7 +31,6 @@
                 <button class="btn">חשב</button>
                 <input oninput="handleInput(this)" type="tel" placeholder="הכנס סכום">
             </form>
-            <!-- <a href="whatsapp://send?text=Screenshot&file=' + imageData + '">Share on WhatsApp</a> -->
             <section class="share-btns-container">
        
                 <button class="btn share" onclick="onShare('whatsapp')">
