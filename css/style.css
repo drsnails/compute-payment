@@ -35,7 +35,8 @@ main {
 
 .top-container {
     /* flex-grow: 5; */
-    min-height: 69vh;
+    margin-top: 8%;
+    min-height: 60vh;
 }
 
 .input-btns-container {
@@ -84,7 +85,7 @@ main {
 .result {
     font-size: 3em;
     margin-inline: 10px;
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 5px;
     cursor: pointer;
 }
@@ -196,7 +197,6 @@ button {
         background-color: white;
         inset-inline: -30%;
         bottom: -10%;
-        
     }
 }
 

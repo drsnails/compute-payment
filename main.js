@@ -13,6 +13,7 @@ function onCompute(ev) {
     if (!amount) return
     const res = computePayment(amount)
     renderResult(res)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 
